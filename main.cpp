@@ -7,6 +7,7 @@ void init_array(uint* array, size_t array_size);
 void print_array(uint* array, size_t array_size);
 void init_matrix(int** matrix, size_t const rows, size_t const cols);
 void print_matrix(int** matrix, size_t const rows, size_t const cols);
+void concatenate_files(std::string filename_in_1, std::string filename_in_2, std::string filename_out);
 
 int main()
 {
@@ -79,6 +80,16 @@ int main()
 
         file_1.close();
         file_2.close();
+
+        // Task 4
+        {
+            std::string filename_cat;
+
+            std::cout << "\nTask 4:\nEnter the name of  the file to be created by concatenating two previous files together\n-> ";
+            std::cin >> filename_cat;
+
+            concatenate_files(filename_1, filename_2, filename_cat);
+        } // Task 4
     } // Task 3
 
     return 0;
@@ -118,4 +129,30 @@ void print_matrix(int** matrix, size_t const rows, size_t cols)
         }
         std::cout << '\n';
     }
+}
+
+void concatenate_files(std::string filename_in_1, std::string filename_in_2, std::string filename_out)
+{
+    std::string line_buf;
+
+    std::ifstream file_in_1(filename_in_1);
+    std::ifstream file_in_2(filename_in_2);
+    std::ofstream file_out(filename_out);
+
+    if (file_in_1.is_open()) {
+        while (!file_in_1.eof()) {
+            std::getline(file_in_1, line_buf);
+            file_out << line_buf << '\n';
+        }
+        file_in_1.close();
+    }
+
+    if (file_in_2.is_open()) {
+        while (!file_in_2.eof()) {
+            std::getline(file_in_2, line_buf);
+            file_out << line_buf << '\n';
+        }
+        file_in_2.close();
+    }
+    file_out.close();
 }
