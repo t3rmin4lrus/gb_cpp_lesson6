@@ -79,7 +79,7 @@ int main()
 
         file_1.close();
         file_2.close();
-    }
+    } // Task 3
 
     return 0;
 }
