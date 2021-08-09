@@ -80,6 +80,8 @@ int main()
         file_1.close();
         file_2.close();
     }
+
+    return 0;
 }
 
 void init_array(uint* array, size_t array_size)
