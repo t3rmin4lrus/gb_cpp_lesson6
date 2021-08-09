@@ -1,0 +1,3 @@
+integer boolean character
+Oleg Vladislav Alexey
+butterfly mosquito ladybug

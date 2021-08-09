@@ -92,6 +92,52 @@ int main()
         } // Task 4
     } // Task 3
 
+    // Task 5
+    {
+        std::string searchword;
+        std::string filename;
+        std::string line_buf;
+        bool found_word = false;
+
+        std::cout << "\nTask 5:\nEnter the word to search in file\n-> ";
+        std::cin >> searchword;
+        std::cout << "\nEnter the name of the file for searching the word\n-> ";
+        std::cin >> filename;
+
+        // Tests:
+        // filename = "test.txt";
+        // searchword = "Vladislav"; // true
+        // searchword = "float"; // false
+
+        std::ifstream textfile(filename);
+
+        if (!textfile.is_open()) {
+            std::cerr << "File does not exist\n";
+            return 1;
+        }
+        while (!textfile.eof()) {
+            std::getline(textfile, line_buf);
+            if (line_buf.find(searchword) != std::string::npos) {
+                found_word = true;
+                break;
+            }
+        }
+
+        if (found_word) {
+            std::cout << "Found word "
+                      << searchword
+                      << " in file "
+                      << filename
+                      << '\n';
+        } else {
+            std::cout << "Didn't find word "
+                      << searchword
+                      << " in file "
+                      << filename
+                      << '\n';
+        }
+    } // Task 5
+
     return 0;
 }
 
