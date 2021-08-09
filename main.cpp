@@ -14,6 +14,7 @@ int main()
         uint* array;
         size_t array_size;
 
+        std::cout << "Task 1:\n";
         std::cout << "Enter size of your array:\n-> ";
         std::cin >> array_size;
 
@@ -47,6 +48,7 @@ int main()
             matrix[i] = new int[N];
 
         init_matrix(matrix, M, N);
+        std::cout << "\nTask 2:\n";
         print_matrix(matrix, M, N);
 
         for (size_t i = 0; i < M; i++)
