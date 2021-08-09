@@ -85,7 +85,7 @@ int main()
         {
             std::string filename_cat;
 
-            std::cout << "\nTask 4:\nEnter the name of  the file to be created by concatenating two previous files together\n-> ";
+            std::cout << "\nTask 4:\nEnter the name of the file to be created by concatenating two previous files together\n-> ";
             std::cin >> filename_cat;
 
             concatenate_files(filename_1, filename_2, filename_cat);
