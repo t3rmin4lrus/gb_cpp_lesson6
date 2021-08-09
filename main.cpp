@@ -18,7 +18,7 @@ int main()
             return 1;
         }
 
-        array = new uint[array_size];
+        array = new (std::nothrow) uint[array_size];
 
         if (array != nullptr) {
             init_array(array, array_size);
