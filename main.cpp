@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
 #include <iostream>
 
 void init_array(uint* array, size_t array_size);
@@ -56,6 +57,29 @@ int main()
         delete[] matrix;
         matrix = nullptr;
     } // Task 2
+
+    // Task 3
+    {
+        std::string filename_1;
+        std::string filename_2;
+
+        std::cout << "\nTask 3:\nEnter the names of two files to be created:\n-> ";
+        std::cin >> filename_1 >> filename_2;
+
+        std::ofstream file_1(filename_1);
+        std::ofstream file_2(filename_2);
+
+        std::srand(std::time(nullptr));
+        for (size_t i = 0; i < 100; i++) {
+            file_1 << i << '\n';
+        }
+        for (size_t i = 0; i < 120; i++) {
+            file_2 << std::rand() << '\n';
+        }
+
+        file_1.close();
+        file_2.close();
+    }
 }
 
 void init_array(uint* array, size_t array_size)
