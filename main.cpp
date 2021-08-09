@@ -7,7 +7,7 @@ void init_array(uint* array, size_t array_size);
 void print_array(uint* array, size_t array_size);
 void init_matrix(int** matrix, size_t const rows, size_t const cols);
 void print_matrix(int** matrix, size_t const rows, size_t const cols);
-void concatenate_files(std::string filename_in_1, std::string filename_in_2, std::string filename_out);
+void concatenate_files(std::string const& filename_in_1, std::string const& filename_in_2, std::string const& filename_out);
 
 int main()
 {
@@ -108,7 +108,6 @@ int main()
         // filename = "test.txt";
         // searchword = "Vladislav"; // true
         // searchword = "float"; // false
-
         std::ifstream textfile(filename);
 
         if (!textfile.is_open()) {
@@ -177,7 +176,7 @@ void print_matrix(int** matrix, size_t const rows, size_t cols)
     }
 }
 
-void concatenate_files(std::string filename_in_1, std::string filename_in_2, std::string filename_out)
+void concatenate_files(std::string const& filename_in_1, std::string const& filename_in_2, std::string const& filename_out)
 {
     std::string line_buf;
 
