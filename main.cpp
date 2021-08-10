@@ -8,6 +8,7 @@ void print_array(uint* array, size_t array_size);
 void init_matrix(int** matrix, size_t const rows, size_t const cols);
 void print_matrix(int** matrix, size_t const rows, size_t const cols);
 void concatenate_files(std::string const& filename_in_1, std::string const& filename_in_2, std::string const& filename_out);
+bool is_word_in_file(std::string const& word, std::string const& filename);
 
 int main()
 {
@@ -94,43 +95,28 @@ int main()
 
     // Task 5
     {
-        std::string searchword;
+        std::string word;
         std::string filename;
-        std::string line_buf;
-        bool found_word = false;
 
         std::cout << "\nTask 5:\nEnter the word to search in file\n-> ";
-        std::cin >> searchword;
+        std::cin >> word;
         std::cout << "\nEnter the name of the file for searching the word\n-> ";
         std::cin >> filename;
 
         // Tests:
         // filename = "test.txt";
-        // searchword = "Vladislav"; // true
-        // searchword = "float"; // false
-        std::ifstream textfile(filename);
+        // word = "Vladislav"; // true
+        // word = "float";     // false
 
-        if (!textfile.is_open()) {
-            std::cerr << "File does not exist\n";
-            return 1;
-        }
-        while (!textfile.eof()) {
-            std::getline(textfile, line_buf);
-            if (line_buf.find(searchword) != std::string::npos) {
-                found_word = true;
-                break;
-            }
-        }
-
-        if (found_word) {
+        if (is_word_in_file(word, filename)) {
             std::cout << "Found word "
-                      << searchword
+                      << word
                       << " in file "
                       << filename
                       << '\n';
         } else {
             std::cout << "Didn't find word "
-                      << searchword
+                      << word
                       << " in file "
                       << filename
                       << '\n';
@@ -200,4 +186,24 @@ void concatenate_files(std::string const& filename_in_1, std::string const& file
         file_in_2.close();
     }
     file_out.close();
+}
+
+bool is_word_in_file(std::string const& word, std::string const& filename)
+{
+    std::string line_buf;
+
+    std::ifstream file(filename);
+
+    if (!file.is_open()) {
+        std::cerr << "File does not exist\n";
+        return false;
+    }
+    while (!file.eof()) {
+        std::getline(file, line_buf);
+        if (line_buf.find(word) != std::string::npos) {
+            return true;
+        }
+    }
+
+    return false;
 }
