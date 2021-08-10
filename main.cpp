@@ -21,7 +21,7 @@ int main()
         std::cout << "Enter size of your array:\n-> ";
         std::cin >> array_size;
 
-        if (!array_size) {
+        if (array_size <= 0) {
             std::cerr << "Enter positive, non-null size for your array\n";
             return 1;
         }
