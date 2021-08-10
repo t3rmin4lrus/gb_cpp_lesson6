@@ -3,10 +3,10 @@
 #include <fstream>
 #include <iostream>
 
-void init_array(uint* array, size_t array_size);
-void print_array(uint* array, size_t array_size);
-void init_matrix(int** matrix, size_t const rows, size_t const cols);
-void print_matrix(int** matrix, size_t const rows, size_t const cols);
+void init_array(uint* const array, size_t const array_size);
+void print_array(uint const* const array, size_t array_size);
+void init_matrix(int** const matrix, size_t const rows, size_t const cols);
+void print_matrix(int const* const* const matrix, size_t const rows, size_t const cols);
 void concatenate_files(std::string const& filename_in_1, std::string const& filename_in_2, std::string const& filename_out);
 bool is_word_in_file(std::string const& word, std::string const& filename);
 
@@ -126,7 +126,7 @@ int main()
     return 0;
 }
 
-void init_array(uint* array, size_t array_size)
+void init_array(uint* const array, size_t array_size)
 {
     if (array_size > 2 << sizeof(uint))
         array_size = 2 << sizeof(uint);
@@ -134,14 +134,14 @@ void init_array(uint* array, size_t array_size)
         array[i] = 1 << i;
 }
 
-void print_array(uint* array, size_t array_size)
+void print_array(uint const* const array, size_t const array_size)
 {
     for (size_t i = 0; i < array_size; i++)
         std::cout << array[i] << " ";
     std::cout << '\n';
 }
 
-void init_matrix(int** matrix, size_t const rows, size_t cols)
+void init_matrix(int** const matrix, size_t const rows, size_t const cols)
 {
     std::srand(std::time(nullptr));
 
@@ -152,7 +152,7 @@ void init_matrix(int** matrix, size_t const rows, size_t cols)
     }
 }
 
-void print_matrix(int** matrix, size_t const rows, size_t cols)
+void print_matrix(int const* const* const matrix, size_t const rows, size_t const cols)
 {
     for (size_t i = 0; i < rows; i++) {
         for (size_t j = 0; j < cols; j++) {
